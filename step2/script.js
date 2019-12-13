@@ -1,11 +1,11 @@
-function chartPrintLine(data) {
+function chartPrint(targetId, chartType, labels, data) {
 
-  var ctx = document.getElementById('myChartLine').getContext('2d');
+  var ctx = $('#' + targetId);
   new Chart(ctx, {
 
-      type: 'line',
+      type: chartType,
       data: {
-          labels: moment.monthsShort(),
+          labels:labels,
           datasets: [{
               label: 'Vendite',
               data: data
@@ -14,22 +14,20 @@ function chartPrintLine(data) {
   });
 }
 
-function chartPrintPie(data) {
+function chartPrintLine(data) {
 
-  var ctx = document.getElementById('myChartPie').getContext('2d');
-  new Chart(ctx, {
+  chartPrint('myChartLine', 'line', moment.monthsShort(), data['data']);
 
-      type: 'pie',
-      data: {
-          labels: label,
-          datasets: [{
-              label: 'Agents',
-              data: data
-          }]
-      }
-  });
 }
 
+function chartPrintPie(data) {
+
+  var agents = Object.key(data['data');
+  var revenue = Object.values(data['data');
+
+  chartPrint('myChartPie', 'pie', agents, revenue);
+
+}
 
   $(document).ready(function () {
 
@@ -38,24 +36,8 @@ function chartPrintPie(data) {
       method: "GET",
       success: function(data) {
 
-          chartPrintLine(data);
-
-      },
-      error: function(error) {
-        console.log("error", error);
-      }
-    });
-
-  })
-
-  $(document).ready(function () {
-
-    $.ajax({
-      url: "getLineData.php",
-      method: "GET",
-      success: function(data) {
-
-          chartPrintPie(data);
+          chartPrintLine(data['fatturato']);
+          chartPrintPie(data['fatturato_by_agent']);
 
       },
       error: function(error) {
