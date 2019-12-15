@@ -22,7 +22,7 @@ function chartPrintLine(data) {
 
 function chartPrintPie(data) {
 
-  var agents = Object.key(data['data');
+  var agents = Object.keys(data['data');
   var revenue = Object.values(data['data');
 
   chartPrint('myChartPie', 'pie', agents, revenue);
