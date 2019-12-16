@@ -61,7 +61,7 @@ function chartTeamEfficiency(data) {
       method: "GET",
       data: {
         level:access
-      }
+      },
       success: function(data) {
 
       console.log(data['team_efficiency']);
