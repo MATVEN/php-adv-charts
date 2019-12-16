@@ -15,15 +15,15 @@
     <div class="container">
 
       <div class="box">
-          <canvas id="chart-line" width="300" height="300"></canvas>
+          <canvas id="chart-line"></canvas>
       </div>
 
       <div class="box">
-    <canvas id="chart-pie" width="300" height="300"></canvas>
+    <canvas id="chart-pie"></canvas>
       </div>
 
       <div class="box">
-      <canvas id="chart-team" width="300" height="300"></canvas>
+      <canvas id="chart-team"></canvas>
       </div>
 
     </div>

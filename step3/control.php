@@ -1,38 +1,32 @@
 <?php
 
+header('Content-Type: application/json');
+
 include 'data.php';
 
-// lettura parametro Get
+$access = $_GET["level"];
 
-foreach ($graphs as $key => $value) {
+$resGraphs = [];
 
-  unset($graphs[$key]);
+foreach ($graphs as $name => $graph) {
+
+  $gAccess = $graph['access'];
+
+  if ($gAccess == 'guest') {
+
+    $resGraphs[$name] = $graph;
+  }
+  if ($gAccess == 'clevel' && $level == 'clevel') {
+
+    $resGraphs[$name] = $graph;
+  }
+  if ($gAccess == 'employee'
+      && ($access == 'employee' || $level == 'clevel')) {
+
+      $resGraphs[$name] = $graph;
+  }
 }
 
+echo json_encode($resGraphs);
+
  ?>
-
-
-<?php
-  include "data.php";
-  $access = $_GET["level"];
-
-  foreach ($graphs as $key => $value) {
-
-    if($access == "guest"{
-      echo $graphs['fatturato']);
-
-    }if($access == "employee"){
-      echo $graphs['fatturato'])
-      .$graphs['fatturato_by_agent']);
-
-    }elseif ($access == "clevel") {
-      echo $graphs;
-    }
-  }
- ?>
-
- if( $value["access"]=="clevel"){
-   unset($graphs[$key]);
- } elseif ($value["access"]=="employee") {
-   unset($graphs[$key]);
- }

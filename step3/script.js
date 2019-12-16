@@ -52,10 +52,19 @@ function chartTeamEfficiency(data) {
     },
 });
 
+function getAccessParameter() {
+
+  var urlParams = new URLSearchParams(window.location.search);
+  var accessParam = urlParams.get('level');
+
+  return accessParam;
+}
+
 }
 
   $(document).ready(function (access) {
 
+    var access = getLevelParameter();
     $.ajax({
       url: "getLineData.php",
       method: "GET",
